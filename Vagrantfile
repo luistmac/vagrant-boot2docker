@@ -34,7 +34,7 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   # config.vm.box = "ubuntu/trust64"
   config.vm.box = "AlbanMontaigu/boot2docker"
-  config.vm.box_version = "= 1.8.2"
+  config.vm.box_version = "= 1.9.0"
 
   # The AlbanMontaigu/boot2docker box has not been set up as a Vagrant
   # 'base box', so it is necessary to specify how to SSH in.
@@ -165,7 +165,7 @@ Vagrant.configure(2) do |config|
      sudo -u tc tce-load -ic python
      umount /mnt/sda2/tmp/tce/optional
 
-     curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+     curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
      chmod 755 /usr/local/bin/docker-compose
 
