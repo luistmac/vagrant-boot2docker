@@ -1,7 +1,7 @@
 data:
   image: httpd:2.4
   volumes:
-    - /data:/usr/local/apache2/htdocs/
+    - /app:/usr/local/apache2/htdocs/
   command: "true"
 
 web:

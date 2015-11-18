@@ -20,26 +20,26 @@ Just clone this repository and run:
     vagrant up
 
 You can then connect to the containerized webserver at
-[http://192.168.70.249](http://192.168.70.249) You can edit `data/index.html` and
+[http://192.168.70.249](http://192.168.70.249) You can edit `app/index.html` and
 see the changes reflected after a couple reloads of the page.
 
-The Vagrantfile syncs `data/` in the working directory to `/data` in the
+The Vagrantfile syncs `app/` in the working directory to `/app` in the
 vagrant box, bidirectionally converting the ownership and group permissions of
 files in the local directory to `33.33` in the vagrant box.
 
-The working directory with untranslated permissions is also synced to 
+The working directory with untranslated permissions is also synced to
 `/vagrant` in the box.
 
 Then, docker-compose is run within the Vagrantfile against the sample
 docker-compose.yml to spin up two containers: the first a volume container
-mapping `/data` in the vagrant box to `/usr/local/apache2/htdocs/` in the
+mapping `/app` in the vagrant box to `/usr/local/apache2/htdocs/` in the
 container; the second, a webserver container, grabbing its volumes from the
 first.
 
 Since the files ownership is translated in the vagrant box, when the containers
 map their volumes to the vagrant box, they see those translated ownerships.
 In the webserver container, 33 is the UID and GID of `www-data`, so the net
-effect is that data files can be edited no matter what the platform or
+effect is that app files can be edited no matter what the platform or
 filesystem Vagrant is running on, and the container will still run correctly.
 
 Rationale
@@ -61,9 +61,9 @@ image running in VirtualBox.
 
 The boot2docker project includes both the ISO for the virtual machine, and a
 number of installers for different platforms, which hook into VirtualBox to
-configure the virtual machine. Unfortunately, (at least at the time 
-this Vagrantfile was written), boot2docker does install easily on Windows, is 
-deemed unnecessary on Linux, does not not have a consistent method to fix the 
+configure the virtual machine. Unfortunately, (at least at the time
+this Vagrantfile was written), boot2docker does install easily on Windows, is
+deemed unnecessary on Linux, does not not have a consistent method to fix the
 permissions problem, and does not have docker-compose installed.
 
 Now, as VirtualBox does have the capability to share folders and translate their

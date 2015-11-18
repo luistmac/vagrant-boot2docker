@@ -74,9 +74,9 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
 
-  # Synced folders for container data.
+  # Synced folders for container app.
 
-  config.vm.synced_folder "./data", "/data",
+  config.vm.synced_folder "./app", "/app",
    # 33 is the www-data user/group in the ubuntu container
    mount_options: ["uid=33","gid=33"]
 
